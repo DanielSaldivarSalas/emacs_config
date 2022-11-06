@@ -132,6 +132,8 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
+(require 'font-lock)
+(require 'font-lock+)
 (use-package all-the-icons
   :ensure t)
 
