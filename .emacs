@@ -61,7 +61,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(all-the-icons doom-modeline swiper ivy evil command-log-mode use-package)))
+   '(evil-leader all-the-icons doom-modeline swiper ivy evil command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -83,6 +83,17 @@
   (setq evil-want-C-i-jump nil)
   :config
   (evil-mode 1)
+   (use-package evil-leader
+    :ensure t
+    :config
+    (global-evil-leader-mode t)
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key
+      "s s" 'swiper
+      "f f" 'find-file
+      "d x w" 'delete-trailing-whitespace))
+
+
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
@@ -132,8 +143,6 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-(require 'font-lock)
-(require 'font-lock+)
 (use-package all-the-icons
   :ensure t)
 
@@ -144,3 +153,4 @@
 
 (mouse-set-point last-input-event)
 (redisplay t)
+
